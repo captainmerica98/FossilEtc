@@ -28,9 +28,13 @@ public class BattleSystem : MonoBehaviour
     {
         GameObject playerGo = Instantiate(playerTeam, playerBattleStation);
         player = playerGo.GetComponent<Team>();
+        player.InitializeTeam();
 
         GameObject enemyGo = Instantiate(enemyTeam, enemyBattleStation);
         enemy = enemyGo.GetComponent<Team>();
+        enemy.InitializeTeam();
+
+        state = BattleState.TURN;
     }
 
     IEnumerator PlayerAttack()

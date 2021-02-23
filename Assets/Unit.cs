@@ -6,9 +6,9 @@ public class Unit : MonoBehaviour
 {
     public string dinoName;
     public int dinoLevel;
-    public int maxHP;
-    public int currentHP;
-    public int attack;
+    public int maxHP = 10;
+    public int currentHP = 10;
+    public int attack = 1;
 
 
     public bool Damage(int dmg)
