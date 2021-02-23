@@ -14,8 +14,8 @@ public class BattleSystem : MonoBehaviour
 
     public BattleState state;
 
-    Team playerUnit;
-    Team enemyUnit;
+    Team player;
+    Team enemy;
 
     // Start is called before the first frame update
     void Start()
@@ -27,11 +27,26 @@ public class BattleSystem : MonoBehaviour
     void SetupBattle()
     {
         GameObject playerGo = Instantiate(playerTeam, playerBattleStation);
-        playerUnit = playerGo.GetComponent<Team>();
+        player = playerGo.GetComponent<Team>();
 
         GameObject enemyGo = Instantiate(enemyTeam, enemyBattleStation);
-        enemyUnit = enemyGo.GetComponent<Team>();
+        enemy = enemyGo.GetComponent<Team>();
     }
 
+    IEnumerator PlayerAttack()
+    {
+        enemy.DealDamage(1,10);
+
+        yield return new WaitForSeconds(2f);
+    }
+
+    public void OnAttackButton()
+    {
+        if (state != BattleState.TURN)
+            return;
+
+        StartCoroutine(PlayerAttack());
+
+    }
  
 }
