@@ -16,6 +16,7 @@ public class Team : MonoBehaviour
 
     public void InitializeTeam()
     {
+        dino1.attack = 1;
         dinos.Add(Instantiate(dino1));
         dinos.Add(Instantiate(dino2));
         dinos.Add(Instantiate(dino3));
